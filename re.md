@@ -42,9 +42,9 @@ grouping</td>
 | 	`[class]`	| 	character class	 |
 | 	`0`		| 	any character	 |
 | 	`%name`		| 	pattern defs[name] or a pre-defined pattern	 |
-| 	`/name/`		| 	non terminal	 |
-| 	<name>		| 	non terminal	 |
-| 	{}		| 	position capture	 |
+| 	`__name__`	| 	non terminal	 |
+| 	`<name>`	| 	non terminal	 |
+| 	`{}`		| 	position capture	 |
 | 	`{ p }`		| 	simple capture	 |
 | 	`{: p :}`	| 	anonymous group capture	 |
 | 	`{:name: p :}`	| 	named group capture	 |
