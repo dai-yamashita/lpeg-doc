@@ -1,4 +1,4 @@
-[![LPeg logo](lpeg-128.gif)](http://www.inf.puc-rio.br/~roberto/lpeg/)
+EF[LPeg logo](lpeg-128.gif)](http://www.inf.puc-rio.br/~roberto/lpeg/)
 
 **LPeg.re**
 
@@ -45,15 +45,15 @@ grouping</td>
 | 	name		| 	non terminal	 |
 | 	<name>		| 	non terminal	 |
 | 	{}		| 	position capture	 |
-| 	{ p }		| 	simple capture	 |
-| 	{: p :}		| 	anonymous group capture	 |
-| 	{:name: p :}	| 	named group capture	 |
-| 	{~ p ~}		| 	substitution capture	 |
-| 	{| p |}		| 	table capture	 |
-| 	#REF!		| 	back reference 	 |
-| 	p ?		| 	optional match	 |
-| 	p *		| 	zero or more repetitions	 |
-| 	p +		| 	one or more repetitions	 |
+| 	`{ p }`		| 	simple capture	 |
+| 	`{: p :}`	| 	anonymous group capture	 |
+| 	`{:name: p :}`	| 	named group capture	 |
+| 	`{~ p ~}`	| 	substitution capture	 |
+| 	`{| p |}`	| 	table capture	 |
+| 	`=name`		| 	back reference 	 |
+| 	`p ?`		| 	optional match	 |
+| 	`p *`		| 	zero or more repetitions	 |
+| 	`p +`		| 	one or more repetitions	 |
 | 	p^num		| 	exactly n repetitions	 |
 | 	p^+num		| 	at least n repetitions	|
 | 	p^-num		| 	at most n repetitions	|
@@ -61,12 +61,12 @@ grouping</td>
 | 	p -> "string"	| 	string capture		|
 | 	p -> num	| 	numbered capture	|
 | 	p -> name	| 	function/query/string capture equivalent to p / defs[name]	 |
-| 	p => name	| 	match-time capture equivalent to lpeg.Cmt(p, defs[name])	 |
-| 	& p		| 	and predicate	 |
-| 	! p		| 	not predicate	 |
-| 	p1 p2		| 	concatenation	 |
-| 	p1 / p2		| 	ordered choice	 |
-| 	(name <- p)+	| 	grammar	 |
+| 	`p => name`	| 	match-time capture equivalent to lpeg.Cmt(p, defs[name])	 |
+| 	`& p`		| 	and predicate	 |
+| 	`! p`		| 	not predicate	 |
+| 	`p1 p2`		| 	concatenation	 |
+| 	`p1 / p2`	| 	ordered choice	 |
+| 	`(name <- p)+`	| 	grammar	 |
 
 
 Any space appearing in a syntax description can be replaced by zero or more space characters and Lua-style comments (`--` until end of line).
