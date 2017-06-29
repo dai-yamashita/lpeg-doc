@@ -36,13 +36,13 @@ grouping</td>
 
 | 	Syntax		| 	Description	 |
 |-----------------------|------------------------|
-| 	( p )		| 	grouping	 |
-| 	'string'	| 	literal string	 |
-| 	"string"	| 	literal string	 |
-| 	[class]		| 	character class	 |
-| 	0		| 	any character	 |
-| 	%name		| 	pattern defs[name] or a pre-defined pattern	 |
-| 	name		| 	non terminal	 |
+| 	`( p )`		| 	grouping	 |
+| 	`'string'`	| 	literal string	 |
+| 	`"string"`	| 	literal string	 |
+| 	`[class]`	| 	character class	 |
+| 	`0`		| 	any character	 |
+| 	`%name`		| 	pattern defs[name] or a pre-defined pattern	 |
+| 	`/name/`		| 	non terminal	 |
 | 	<name>		| 	non terminal	 |
 | 	{}		| 	position capture	 |
 | 	`{ p }`		| 	simple capture	 |
