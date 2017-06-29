@@ -1,4 +1,4 @@
-![LPeg logo](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-128.gif)](http://www.inf.puc-rio.br/~roberto/lpeg/)
+[![LPeg logo](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-128.gif)](http://www.inf.puc-rio.br/~roberto/lpeg/)
 
 **LPeg.re**
 
