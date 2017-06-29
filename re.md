@@ -7,10 +7,10 @@ Regex syntax for LPEG
 re
 ==
 
--   [Basic Constructions](#basic constructions)
--   [Functions](#functions)
--   [Some Examples](#some examples)
--   [License](#license)
+*   [Basic Constructions](#basic-constructions)
+*   [Functions](#functions)
+*   [Some Examples](#some-examples)
+*   [License](#license)
 
 The `re` Module
 ---------------
