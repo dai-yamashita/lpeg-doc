@@ -41,8 +41,8 @@ grouping</td>
 | 	`"string"`	| 	literal string	 |
 | 	`[class]`	| 	character class	 |
 | 	`0`		| 	any character	 |
-| 	`%name`		| 	pattern defs[name] or a pre-defined pattern	 |
-| 	`__name__`	| 	non terminal	 |
+| 	`%name`		| 	pattern `defs[name]` or a pre-defined pattern	 |
+| 	`name`		| 	non terminal	 |
 | 	`<name>`	| 	non terminal	 |
 | 	`{}`		| 	position capture	 |
 | 	`{ p }`		| 	simple capture	 |
@@ -60,8 +60,8 @@ grouping</td>
 | 	p -> 'string'	| 	string capture		|
 | 	p -> "string"	| 	string capture		|
 | 	p -> num	| 	numbered capture	|
-| 	p -> name	| 	function/query/string capture equivalent to p / defs[name]	 |
-| 	`p => name`	| 	match-time capture equivalent to lpeg.Cmt(p, defs[name])	 |
+| 	p -> name	| 	function/query/string capture equivalent to `p / defs[name]`	 |
+| 	`p => name`	| 	match-time capture equivalent to `lpeg.Cmt(p, defs[name])`	 |
 | 	`& p`		| 	and predicate	 |
 | 	`! p`		| 	not predicate	 |
 | 	`p1 p2`		| 	concatenation	 |
