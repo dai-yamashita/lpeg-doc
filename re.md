@@ -95,7 +95,7 @@ Some Examples
 
 The next code shows a simple complete Lua program using the `re` module:
 
-``` {.example}
+```lua
 local re = require"re"
 
 -- find the position of the first numeral in a string
@@ -117,7 +117,7 @@ print(re.gsub("hello World", "[aeiou]", "."))
 
 The following call will produce the same pattern produced by the Lua expression in the [balanced parentheses](lpeg.html#balanced) example:
 
-``` {.example}
+```lua
 b = re.compile[[  balanced <- "(" ([^()] / balanced)* ")"  ]]
 ```
 
@@ -125,7 +125,7 @@ b = re.compile[[  balanced <- "(" ([^()] / balanced)* ")"  ]]
 
 The next example reverses a string:
 
-``` {.example}
+```lua
 rev = re.compile[[ R <- (!.) -> '' / ({.} R) -> '%2%1']]
 print(rev:match"0123456789")   --> 9876543210
 ```
@@ -134,7 +134,7 @@ print(rev:match"0123456789")   --> 9876543210
 
 The next example replicates the [CSV decoder](lpeg.html#CSV):
 
-``` {.example}
+```lua
 record = re.compile[[
   record <- {| field (',' field)* |} (%nl / !.)
   field <- escaped / nonescaped
@@ -147,7 +147,7 @@ record = re.compile[[
 
 The next example matches Lua long strings:
 
-``` {.example}
+```lua
 c = re.compile([[
   longstring <- ('[' {:eq: '='* :} '[' close)
   close <- ']' =eq ']' / . close
@@ -160,7 +160,7 @@ print(c:match'[==[]]===]]]]==]===[]')   --> 17
 
 This example shows a simple way to build an abstract syntax tree (AST) for a given grammar. To keep our example simple, let us consider the following grammar for lists of names:
 
-``` {.example}
+```lua
 p = re.compile[[
       listname <- (name s)*
       name <- [a-z][a-z]*
@@ -170,7 +170,7 @@ p = re.compile[[
 
 Now, we will add captures to build a corresponding AST. As a first step, the pattern will build a table to represent each non terminal; terminals will be represented by their corresponding strings:
 
-``` {.example}
+```lua
 c = re.compile[[
       listname <- {| (name s)* |}
       name <- {| {[a-z][a-z]*} |}
@@ -182,7 +182,7 @@ Now, a match against `"hi hello bye"` results in the table `{{"hi"}, {"hello"}, 
 
 For such a simple grammar, this AST is more than enough; actually, the tables around each single name are already overkilling. More complex grammars, however, may need some more structure. Specifically, it would be useful if each table had a `tag` field telling what non terminal that table represents. We can add such a tag using [named group captures](lpeg.html#cap-g):
 
-``` {.example}
+```lua
 x = re.compile[[
       listname <- {| {:tag: '' -> 'list':} (name s)* |}
       name <- {| {:tag: '' -> 'id':} {[a-z][a-z]*} |}
@@ -192,7 +192,7 @@ x = re.compile[[
 
 With these group captures, a match against `"hi hello bye"` results in the following table:
 
-``` {.example}
+```lua
 {tag="list",
   {tag="id", "hi"},
   {tag="id", "hello"},
@@ -204,7 +204,7 @@ With these group captures, a match against `"hi hello bye"` results in the follo
 
 This example breaks indented blocks into tables, respecting the indentation:
 
-``` {.example}
+```lua
 p = re.compile[[
   block <- {| {:ident:' '*:} line
            ((=ident !' ' line) / &(=ident ' ') block)* |}
@@ -214,7 +214,7 @@ p = re.compile[[
 
 As an example, consider the following text:
 
-``` {.example}
+```lua
 t = p:match[[
 first line
   subline 1
@@ -229,7 +229,7 @@ third line
 
 The resulting table `t` will be like this:
 
-``` {.example}
+```lua
    {'first line'; {'subline 1'; 'subline 2'; ident = '  '};
     'second line';
     'third line'; { 'subline 3.1'; {'subline 3.1.1'; ident = '    '};
@@ -241,7 +241,7 @@ The resulting table `t` will be like this:
 
 This example implements a simple macro expander. Macros must be defined as part of the pattern, following some simple rules:
 
-``` {.example}
+```lua
 p = re.compile[[
       text <- {~ item* ~}
       item <- macro / [^()] / '(' item* ')'
@@ -262,7 +262,7 @@ A `text` is a sequence of items, wherein we apply a substitution capture to expa
 
 This example shows the complete syntax of patterns accepted by `re`.
 
-``` {.example}
+```lua
 p = [=[
 
 pattern         <- exp !.
