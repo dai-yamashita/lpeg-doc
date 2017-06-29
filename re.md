@@ -49,7 +49,7 @@ grouping</td>
 | 	`{: p :}`	| 	anonymous group capture	 |
 | 	`{:name: p :}`	| 	named group capture	 |
 | 	`{~ p ~}`	| 	substitution capture	 |
-| 	`{| p |}`	| 	table capture	 |
+| 	`{\| p \|}`	| 	table capture	 |
 | 	`=name`		| 	back reference 	 |
 | 	`p ?`		| 	optional match	 |
 | 	`p *`		| 	zero or more repetitions	 |
