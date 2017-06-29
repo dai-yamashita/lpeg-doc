@@ -1,4 +1,4 @@
-EF[LPeg logo](lpeg-128.gif)](http://www.inf.puc-rio.br/~roberto/lpeg/)
+![LPeg logo](lpeg-128.gif)](http://www.inf.puc-rio.br/~roberto/lpeg/)
 
 **LPeg.re**
 
@@ -19,20 +19,7 @@ The `re` module (provided by file `re.lua` in the distribution) supports a somew
 
 The next table summarizes `re`'s syntax. A `p` represents an arbitrary pattern; `num` represents a number (`[0-9]+`); `name` represents an identifier (`[a-zA-Z][a-zA-Z0-9_]*`). Constructions are listed in order of decreasing precedence.
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>Syntax</strong>
-<strong>Description</strong></td>
-<td align="left"><code>( p )</code>
-grouping</td>
-</tr>
-</tbody>
-</table>
+<center>
 
 | 	Syntax		| 	Description	 |
 |-----------------------|------------------------|
@@ -68,6 +55,7 @@ grouping</td>
 | 	`p1 / p2`	| 	ordered choice	 |
 | 	`(name <- p)+`	| 	grammar	 |
 
+</center>
 
 Any space appearing in a syntax description can be replaced by zero or more space characters and Lua-style comments (`--` until end of line).
 
