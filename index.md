@@ -27,20 +27,20 @@ Following the Snobol tradition, LPeg defines patterns as first-class objects. Th
 
 For a quick glance of the library, the following table summarizes its basic operations for creating patterns:
 
-| Operator	| Description	|
-|---------------|-----------------------|
-| lpeg.P(string)| Matches string literally			|
-| lpeg.P(n)	| Matches exactly n characters			|
-| lpeg.S(string)| Matches any character in string (Set)		|
-| lpeg.R("xy")	| Matches any character between x and y (Range)	|
-| patt^n	| Matches at least n repetitions of patt		|
-| patt^-n	| Matches at most n repetitions of patt		|
-| patt1 * patt2	| Matches patt1 followed by patt2			|
-| patt1 + patt2	| Matches patt1 or patt2 (ordered choice)		|
-| patt1 - patt2	| Matches patt1 if patt2 does not match		|
-| -patt		| Equivalent to ("" - patt)			|
-| #patt		| Matches patt but consumes no input		|
-| lpeg.B(patt)	| Matches patt behind the current position, consuming no input	|
+| Operator		| Description							|
+|-----------------------|---------------------------------------------------------------|
+| `lpeg.P(string)`	| Matches string literally					|
+| `lpeg.P(n)`		| Matches exactly n characters					|
+| `lpeg.S(string)`	| Matches any character in string (Set)				|
+| `lpeg.R("xy")`	| Matches any character between x and y (Range)			|
+| `patt^n`		| Matches at least `n` repetitions of patt			|
+| `patt^-n`		| Matches at most `n` repetitions of patt			|
+| `patt1 * patt2`	| Matches `patt1` followed by `patt2`				|
+| `patt1 + patt2`	| Matches `patt1` or `patt2` (ordered choice)			|
+| `patt1 - patt2`	| Matches `patt1` if `patt2` does not match			|
+| `-patt`		| Equivalent to `("" - patt)`					|
+| `#patt`		| Matches `patt` but consumes no input				|
+| `lpeg.B(patt)`	| Matches `patt` behind the current position, consuming no input|
 
 
 As a very simple example, `lpeg.R("09")^1` creates a pattern that matches a non-empty sequence of digits. As a not so simple example, `-lpeg.P(1)` (which can be written as `lpeg.P(-1)`, or simply `-1` for operations expecting a pattern) matches an empty string only if it cannot match a single character; so, it succeeds only at the end of the subject.
@@ -143,7 +143,7 @@ Returns a pattern equivalent to an *ordered choice* of `patt1` and `patt2`. (Thi
 
 If both `patt1` and `patt2` are character sets, this operation is equivalent to set union.
 
-``` {.example}
+```lua
 lower = lpeg.R("az")
 upper = lpeg.R("AZ")
 letter = lower + upper
@@ -188,7 +188,7 @@ When a table is fixed, the result is a pattern that matches its *initial rule*. 
 
 As an example, the following grammar matches strings of a's and b's that have the same number of a's and b's:
 
-``` {.example}
+```lua
 equalcount = lpeg.P{
   "S";   -- initial rule name
   S = "a" * lpeg.V"B" + "b" * lpeg.V"A" + "",
@@ -199,7 +199,7 @@ equalcount = lpeg.P{
 
 It is equivalent to the following grammar in standard PEG notation:
 
-``` {.example}
+```lua
   S <- 'a' B / 'b' A / ''
   A <- 'a' S / 'b' A A
   B <- 'b' S / 'a' B B
@@ -212,37 +212,22 @@ A *capture* is a pattern that produces values (the so called *semantic informati
 
 The following table summarizes the basic captures:
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>Operation</strong>
-<strong>What it Produces</strong></td>
-<td align="left"><a href="#cap-c"><code>lpeg.C(patt)</code></a>
-the match for <code>patt</code> plus all captures made by <code>patt</code></td>
-</tr>
-</tbody>
-</table>
-
 | Operation			| What it Produces											|
 |-------------------------------|-------------------------------------------------------------------------------------------------------|
-| lpeg.C(patt)			| the match for patt plus all captures made by patt							|
-| lpeg.Carg(n)			| the value of the nth extra argument to lpeg.match (matches the empty string)				|
-| lpeg.Cb(name)			| the values produced by the previous group capture named name (matches the empty string)		|
-| lpeg.Cc(values)		| the given values (matches the empty string)								|
-| lpeg.Cf(patt, func)		| a folding of the captures from patt									|
-| lpeg.Cg(patt [, name])	| the values produced by patt, optionally tagged with name						|
-| lpeg.Cp()			| the current position (matches the empty string)							|
-| lpeg.Cs(patt)			| the match for patt with the values from nested captures replacing their matches			|
-| lpeg.Ct(patt)			| a table with all captures from patt									|
-| patt / string			| string, with some marks replaced by captures of patt							|
-| patt / number			| the n-th value captured by patt, or no value when number is zero.					|
-| patt / table			| table[c], where c is the (first) capture of patt							|
-| patt / function		| the returns of function applied to the captures of patt						|
-| lpeg.Cmt(patt, function)	| the returns of function applied to the captures of patt; the application is done at match time	|
+| `lpeg.C(patt)`		| the match for `patt` plus all captures made by `patt`							|
+| `lpeg.Carg(n)`		| the value of the `n`th extra argument to lpeg.match (matches the empty string)			|
+| `lpeg.Cb(name)`		| the values produced by the previous group capture named `name` (matches the empty string)		|
+| `lpeg.Cc(values)`		| the given `values` (matches the empty string)								|
+| `lpeg.Cf(patt, func)`		| a folding of the captures from `patt`									|
+| `lpeg.Cg(patt [, name])`	| the values produced by `patt`, optionally tagged with `name`						|
+| `lpeg.Cp()`			| the current position (matches the empty string)							|
+| `lpeg.Cs(patt)`		| the match for `patt` with the values from nested captures replacing their matches			|
+| `lpeg.Ct(patt)`		| a table with all captures from `patt`									|
+| `patt / string`		| `string`, with some marks replaced by captures of patt						|
+| `patt / number`		| the `n`-th value captured by `patt`, or no value when `number` is zero.				|
+| `patt / table`		| `table[c]`, where `c` is the (first) capture of `patt`						|
+| `patt / function`		| the returns of function applied to the captures of `patt`						|
+| `lpeg.Cmt(patt, function)`	| the returns of function applied to the captures of `patt`; the application is done at match time	|
 
 
 A capture pattern produces its values only when it succeeds. For instance, the pattern `lpeg.C(lpeg.P"a"^-1)` produces the empty string when there is no `"a"` (because the pattern `"a"?` succeeds), while the pattern `lpeg.C("a")^-1` does not produce any value when there is no `"a"` (because the pattern `"a"` fails). A pattern inside a loop or inside a recursive structure produces values for each match.
@@ -277,7 +262,7 @@ This capture assumes that `patt` should produce at least one capture with at lea
 
 As an example, the following pattern matches a list of numbers separated by commas and returns their addition:
 
-``` {.example}
+```lua
 -- matches a numeral and captures its numerical value
 number = lpeg.R"09"^1 / tonumber
 
@@ -345,7 +330,7 @@ Some Examples
 
 This example shows a very simple but complete program that builds and uses a pattern:
 
-``` {.example}
+```lua
 local lpeg = require "lpeg"
 
 -- matches a word followed by end-of-string
@@ -362,7 +347,7 @@ The pattern is simply a sequence of one or more lower-case letters followed by t
 
 This example parses a list of name-value pairs and returns a table with those pairs:
 
-``` {.example}
+```lua
 lpeg.locale(lpeg)   -- adds locale entries into 'lpeg' table
 
 local space = lpeg.space^0
@@ -379,7 +364,7 @@ Each pair has the format `name = name` followed by an optional separator (a comm
 
 The following code builds a pattern that splits a string using a given pattern `sep` as a separator:
 
-``` {.example}
+```lua
 function split (s, sep)
   sep = lpeg.P(sep)
   local elem = lpeg.C((1 - sep)^0)
@@ -392,7 +377,7 @@ First the function ensures that `sep` is a proper pattern. The pattern `elem` is
 
 If the split results in too many values, it may overflow the maximum number of values that can be returned by a Lua function. In this case, we can collect these values in a table:
 
-``` {.example}
+```lua
 function split (s, sep)
   sep = lpeg.P(sep)
   local elem = lpeg.C((1 - sep)^0)
@@ -407,7 +392,7 @@ The primitive `match` works only in anchored mode. If we want to find a pattern 
 
 Because patterns are composable, we can write a function that, given any arbitrary pattern `p`, returns a new pattern that searches for `p` anywhere in a string. There are several ways to do the search. One way is like this:
 
-``` {.example}
+```lua
 function anywhere (p)
   return lpeg.P{ p + 1 * lpeg.V(1) }
 end
@@ -417,7 +402,7 @@ This grammar has a straight reading: it matches `p` or skips one character and t
 
 If we want to know where the pattern is in the string (instead of knowing only that it is there somewhere), we can add position captures to the pattern:
 
-``` {.example}
+```lua
 local I = lpeg.Cp()
 function anywhere (p)
   return lpeg.P{ I * p * I + 1 * lpeg.V(1) }
@@ -428,7 +413,7 @@ print(anywhere("world"):match("hello world!"))   -> 7   12
 
 Another option for the search is like this:
 
-``` {.example}
+```lua
 local I = lpeg.Cp()
 function anywhere (p)
   return (1 - lpeg.P(p))^0 * I * p * I
@@ -439,7 +424,7 @@ Again the pattern has a straight reading: it skips as many characters as possibl
 
 If we want to look for a pattern only at word boundaries, we can use the following transformer:
 
-``` {.example}
+```lua
 local t = lpeg.locale()
 
 function atwordboundary (p)
@@ -453,7 +438,7 @@ end
 
 The following pattern matches only strings with balanced parentheses:
 
-``` {.example}
+```lua
 b = lpeg.P{ "(" * ((1 - lpeg.S"()") + lpeg.V(1))^0 * ")" }
 ```
 
@@ -463,7 +448,7 @@ Reading the first (and only) rule of the given grammar, we have that a balanced 
 
 The next example does a job somewhat similar to `string.gsub`. It receives a pattern and a replacement value, and substitutes the replacement value for all occurrences of the pattern in a given string:
 
-``` {.example}
+```lua
 function gsub (s, patt, repl)
   patt = lpeg.P(patt)
   patt = lpeg.Cs((patt / repl + 1)^0)
@@ -477,7 +462,7 @@ As in `string.gsub`, the replacement value can be a string, a function, or a tab
 
 This example breaks a string into comma-separated values, returning all fields:
 
-``` {.example}
+```lua
 local field = '"' * lpeg.Cs(((lpeg.P(1) - '"') + lpeg.P'""' / '"')^0) * '"' +
                     lpeg.C((1 - lpeg.S',\n"')^0)
 
@@ -498,7 +483,7 @@ As it is, the previous pattern returns each field as a separated result. If we a
 
 It is not difficult to use LPeg to convert a string from UTF-8 encoding to Latin 1 (ISO 8859-1):
 
-``` {.example}
+```lua
 -- convert a two-byte UTF-8 sequence to a Latin 1 character
 local function f2 (s)
   local c1, c2 = string.byte(s, 1, 2)
@@ -515,7 +500,7 @@ In this code, the definition of UTF-8 is already restricted to the Latin 1 range
 
 As the definition of `decode_pattern` demands that the pattern matches the whole input (because of the -1 at its end), any invalid string will simply fail to match, without any useful information about the problem. We can improve this situation redefining `decode_pattern` as follows:
 
-``` {.example}
+```lua
 local function er (_, i) error("invalid encoding at position " .. i) end
 
 local decode_pattern = lpeg.Cs(utf8^0) * (-1 + lpeg.P(er))
@@ -527,7 +512,7 @@ Now, if the pattern `utf8^0` stops before the end of the string, an appropriate 
 
 We can extend the previous patterns to handle all Unicode code points. Of course, we cannot translate them to Latin 1 or any other one-byte encoding. Instead, our translation results in a array with the code points represented as numbers. The full code is here:
 
-``` {.example}
+```lua
 -- decode a two-byte UTF-8 sequence
 local function f2 (s)
   local c1, c2 = string.byte(s, 1, 2)
@@ -562,7 +547,7 @@ A long string in Lua starts with the pattern `[=*[` and ends at the first occurr
 
 To match a long string in Lua, the pattern must capture the first repetition of equal signs and then, whenever it finds a candidate for closing the string, check whether it has the same number of equal signs.
 
-``` {.example}
+```lua
 equals = lpeg.P"="^0
 open = "[" * lpeg.Cg(equals, "init") * "[" * lpeg.P"\n"^-1
 close = "]" * lpeg.C(equals) * "]"
@@ -576,7 +561,7 @@ The `open` pattern matches `[=*[`, capturing the repetitions of equal signs in a
 
 This example is a complete parser and evaluator for simple arithmetic expressions. We write it in two styles. The first approach first builds a syntax tree and then traverses this tree to compute the expression value:
 
-``` {.example}
+```lua
 -- Lexical Elements
 local Space = lpeg.S(" \n\t")^0
 local Number = lpeg.C(lpeg.P"-"^-1 * lpeg.R("09")^1) * Space
@@ -627,7 +612,7 @@ print(evalExp"3 + 5*9 / (1+1) - 12")   --> 13.5
 
 The second style computes the expression value on the fly, without building the syntax tree. The following grammar takes this approach. (It assumes the same lexical elements as before.)
 
-``` {.example}
+```lua
 -- Auxiliary function
 function eval (v1, op, v2)
   if (op == "+") then return v1 + v2
