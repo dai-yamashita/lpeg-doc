@@ -7,19 +7,20 @@ Regex syntax for LPEG
 re
 ==
 
--   [Basic Constructions](#basic)
--   [Functions](#func)
--   [Some Examples](#ex)
--   [License](#license)
+-   [Basic Constructions](#Basic Constructions)
+-   [Functions](#Functions)
+-   [Some Examples](#Some Examples)
+-   [License](#License)
 
 The `re` Module
 ---------------
 
 The `re` module (provided by file `re.lua` in the distribution) supports a somewhat conventional regex syntax for pattern usage within [LPeg](lpeg.html).
 
-The next table summarizes `re`'s syntax. A `p` represents an arbitrary pattern; `num` represents a number (`[0-9]+`); `name` represents an identifier (`[a-zA-Z][a-zA-Z0-9_]*`). Constructions are listed in order of decreasing precedence.
-
-<center>
+The next table summarizes `re`'s syntax. A `p` represents an arbitrary pattern;
+`num` represents a number (`[0-9]+`);
+`name` represents an identifier (`[a-zA-Z][a-zA-Z0-9_]*`).
+Constructions are listed in order of decreasing precedence.
 
 | 	Syntax		| 	Description	 |
 |-----------------------|------------------------|
@@ -55,7 +56,6 @@ The next table summarizes `re`'s syntax. A `p` represents an arbitrary pattern; 
 | 	`p1 / p2`	| 	ordered choice	 |
 | 	`(name <- p)+`	| 	grammar	 |
 
-</center>
 
 Any space appearing in a syntax description can be replaced by zero or more space characters and Lua-style comments (`--` until end of line).
 
