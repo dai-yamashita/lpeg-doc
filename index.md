@@ -11,10 +11,10 @@ LPeg
     -   [Introduction](#introduction)
     -   [Functions](#functions)
     -   [Basic Constructions](#basic-constructions)
-    -   [Grammars](#grammar)
+    -   [Grammars](#grammars)
     -   [Captures](#captures)
     -   [Some Examples](#some-examples)
-    -   [The `re` Module](the-re-module)
+    -   [The `re` Module](re.md)
     -   [Download](#download)
     -   [License](#license)
 
