@@ -8,13 +8,13 @@ LPeg
 ====
 
 -   **Home**
-    -   [Introduction](#intro)
-    -   [Functions](#func)
-    -   [Basic Constructions](#basic)
+    -   [Introduction](#introduction)
+    -   [Functions](#functions)
+    -   [Basic Constructions](#basic-constructions)
     -   [Grammars](#grammar)
     -   [Captures](#captures)
-    -   [Some Examples](#ex)
-    -   [The `re` Module](re.html)
+    -   [Some Examples](#some-examples)
+    -   [The `re` Module](the-re-module)
     -   [Download](#download)
     -   [License](#license)
 
