@@ -54,13 +54,13 @@ grouping</td>
 | 	`p ?`		| 	optional match	 |
 | 	`p *`		| 	zero or more repetitions	 |
 | 	`p +`		| 	one or more repetitions	 |
-| 	p^num		| 	exactly n repetitions	 |
-| 	p^+num		| 	at least n repetitions	|
-| 	p^-num		| 	at most n repetitions	|
-| 	p -> 'string'	| 	string capture		|
-| 	p -> "string"	| 	string capture		|
-| 	p -> num	| 	numbered capture	|
-| 	p -> name	| 	function/query/string capture equivalent to `p / defs[name]`	 |
+| 	`p^num`		| 	exactly `nun` repetitions	 |
+| 	`p^+num`	| 	at least `num` repetitions	|
+| 	`p^-num`	| 	at most `num` repetitions	|
+| 	`p -> 'string'`	| 	string capture		|
+| 	`p -> "string"`	| 	string capture		|
+| 	`p -> num`	| 	numbered capture	|
+| 	`p -> name`	| 	function/query/string capture equivalent to `p / defs[name]`	 |
 | 	`p => name`	| 	match-time capture equivalent to `lpeg.Cmt(p, defs[name])`	 |
 | 	`& p`		| 	and predicate	 |
 | 	`! p`		| 	not predicate	 |
