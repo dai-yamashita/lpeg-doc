@@ -14,7 +14,7 @@ LPeg
     -   [Grammars](#grammars)
     -   [Captures](#captures)
     -   [Some Examples](#some-examples)
-    -   [The `re` Module](lpeg/re.md)
+    -   [The `re` Module](re.md)
     -   [Download](#download)
     -   [License](#license)
 
