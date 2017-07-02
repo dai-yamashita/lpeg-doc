@@ -28,7 +28,7 @@ Constructions are listed in order of decreasing precedence.
 | 	`'string'`	| 	literal string	 |
 | 	`"string"`	| 	literal string	 |
 | 	`[class]`	| 	character class	 |
-| 	`0`		| 	any character	 |
+| 	`.`		| 	any character	 |
 | 	`%name`		| 	pattern `defs[name]` or a pre-defined pattern	 |
 | 	`name`		| 	non terminal	 |
 | 	`<name>`	| 	non terminal	 |
