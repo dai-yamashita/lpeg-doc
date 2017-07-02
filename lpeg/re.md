@@ -115,7 +115,7 @@ print(re.gsub("hello World", "[aeiou]", "."))
 
 ### Balanced parentheses
 
-The following call will produce the same pattern produced by the Lua expression in the [balanced parentheses](index.md#balanced) example:
+The following call will produce the same pattern produced by the Lua expression in the [balanced parentheses](index.md#balanced-parentheses) example:
 
 ```lua
 b = re.compile[[  balanced <- "(" ([^()] / balanced)* ")"  ]]
@@ -132,7 +132,7 @@ print(rev:match"0123456789")   --> 9876543210
 
 ### CSV decoder
 
-The next example replicates the [CSV decoder](index.md#CSV):
+The next example replicates the [CSV decoder](index.md#comma-separated-values-csv):
 
 ```lua
 record = re.compile[[
