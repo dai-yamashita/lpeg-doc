@@ -15,7 +15,7 @@ re
 The `re` Module
 ---------------
 
-The `re` module (provided by file `re.lua` in the distribution) supports a somewhat conventional regex syntax for pattern usage within [LPeg](lpeg.html).
+The `re` module (provided by file `re.lua` in the distribution) supports a somewhat conventional regex syntax for pattern usage within [LPeg](index.md).
 
 The next table summarizes `re`'s syntax. A `p` represents an arbitrary pattern;
 `num` represents a number (`[0-9]+`);
@@ -115,7 +115,7 @@ print(re.gsub("hello World", "[aeiou]", "."))
 
 ### Balanced parentheses
 
-The following call will produce the same pattern produced by the Lua expression in the [balanced parentheses](lpeg.html#balanced) example:
+The following call will produce the same pattern produced by the Lua expression in the [balanced parentheses](index.md#balanced) example:
 
 ```lua
 b = re.compile[[  balanced <- "(" ([^()] / balanced)* ")"  ]]
@@ -132,7 +132,7 @@ print(rev:match"0123456789")   --> 9876543210
 
 ### CSV decoder
 
-The next example replicates the [CSV decoder](lpeg.html#CSV):
+The next example replicates the [CSV decoder](index.md#CSV):
 
 ```lua
 record = re.compile[[
@@ -180,7 +180,7 @@ c = re.compile[[
 
 Now, a match against `"hi hello bye"` results in the table `{{"hi"}, {"hello"}, {"bye"}}`.
 
-For such a simple grammar, this AST is more than enough; actually, the tables around each single name are already overkilling. More complex grammars, however, may need some more structure. Specifically, it would be useful if each table had a `tag` field telling what non terminal that table represents. We can add such a tag using [named group captures](lpeg.html#cap-g):
+For such a simple grammar, this AST is more than enough; actually, the tables around each single name are already overkilling. More complex grammars, however, may need some more structure. Specifically, it would be useful if each table had a `tag` field telling what non terminal that table represents. We can add such a tag using [named group captures](index.md#cap-g):
 
 ```lua
 x = re.compile[[
